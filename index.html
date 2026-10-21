@@ -337,7 +337,7 @@ h1 .em,.scrub .em{font-style:normal;}
 .hero-hotspot:hover .tip,.hero-hotspot:focus-visible .tip{opacity:1;transform:translateX(50%) translateY(0);pointer-events:auto;}
 .hero-hotspot.h2 .tip{right:auto;left:0;transform:translateY(6px);}
 .hero-hotspot.h2:hover .tip,.hero-hotspot.h2:focus-visible .tip{transform:translateY(0);}
-.hero-hotspot.h1{top:0%;right:14%;}
+.hero-hotspot.h1{top:11%;right:14%;}
 .hero-hotspot.h2{top:38%;left:2%;}
 .hero-hotspot.h3{bottom:16%;right:64%;}
 
@@ -768,6 +768,34 @@ form.is-sent .field,form.is-sent .btn{display:none;}
   .tab-side .stat-line dt{font-size:12px;line-height:1.3;}
   .tab-side .stat-line dd{font-size:13px;line-height:1.3;overflow-wrap:anywhere;}
 }
+/* ---------- City autocomplete ---------- */
+.combo{position:relative;}
+.combo &gt; input{width:100%;padding-inline-end:44px;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns=&#x27;http://www.w3.org/2000/svg&#x27; width=&#x27;16&#x27; height=&#x27;16&#x27; viewBox=&#x27;0 0 24 24&#x27; fill=&#x27;none&#x27; stroke=&#x27;%232194be&#x27; stroke-width=&#x27;2&#x27; stroke-linecap=&#x27;round&#x27; stroke-linejoin=&#x27;round&#x27;%3E%3Cpolyline points=&#x27;6 9 12 15 18 9&#x27;/%3E%3C/svg%3E&quot;);background-repeat:no-repeat;background-position:left 14px center;}
+.combo-list{position:absolute;top:calc(100% + 6px);inset-inline:0;z-index:30;max-height:240px;overflow-y:auto;margin:0;padding:6px;list-style:none;background:#fff;border:1px solid rgba(33,148,190,.3);border-radius:12px;box-shadow:0 24px 48px -20px rgba(15,35,45,.4);text-align:start;}
+.combo-list[hidden]{display:none;}
+.combo-list li{padding:10px 14px;border-radius:8px;font-size:15px;cursor:pointer;}
+.combo-list li:hover,.combo-list li[aria-selected=&quot;true&quot;]{background:var(--accent-soft);color:var(--accent-strong);}
+.combo-list li.no-results{color:var(--text-soft);cursor:default;}
+.combo-list li.no-results:hover{background:none;color:var(--text-soft);}
+
+/* ---------- Header: grouped icons + tooltip placement ---------- */
+.th-icons{display:flex;align-items:center;gap:16px;}
+.hero-hotspot.h1 .tip{bottom:auto;top:calc(100% + 16px);transform:translateX(50%) translateY(-6px);}
+.hero-hotspot.h1:hover .tip,.hero-hotspot.h1:focus-visible .tip,.hero-hotspot.h1.is-open .tip{transform:translateX(50%) translateY(0);}
+@media (max-width:980px){
+  .th-inner{display:grid;grid-template-columns:1fr auto 1fr;gap:0;}
+  .th-logo{grid-column:2;grid-row:1;justify-self:center;}
+  .th-logo img{width:34px;height:34px;}
+  .th-tools{display:contents;}
+  .th-burger{grid-column:1;grid-row:1;justify-self:start;display:block;padding:6px;}
+  .th-burger svg{width:34px;height:34px;stroke-width:2.2;}
+  .th-icons{grid-column:3;grid-row:1;justify-self:end;gap:20px;}
+  .th-icons .th-icon img{width:28px;height:28px;}
+}
+@media (max-width:720px){
+  .hero-hotspot.h1 .tip{right:0;left:auto;transform:translateY(-6px);}
+  .hero-hotspot.h1:hover .tip,.hero-hotspot.h1:focus-visible .tip,.hero-hotspot.h1.is-open .tip{transform:translateY(0);}
+}
 &lt;/style&gt;
 &lt;meta name=&quot;robots&quot; content=&quot;noindex,nofollow&quot;&gt;
 &lt;/head&gt;
@@ -832,8 +860,10 @@ form.is-sent .field,form.is-sent .btn{display:none;}
       &lt;/ul&gt;
     &lt;/nav&gt;
     &lt;div class=&quot;th-tools&quot;&gt;
-      &lt;a class=&quot;th-icon&quot; href=&quot;#&quot; aria-label=&quot;עגלת קניות&quot;&gt;&lt;img src=&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAOdEVYdFNvZnR3YXJlAEZpZ21hnrGWYwAAAVpJREFUeAHdVctxgzAQXckuwDnxGyZKBaEEp4I4FSQtpIN05EkHpAN3YPnC52TOfPPEgCdhgDEgX/xmQJrlaVfLW62YbdtHIhL0HzIIgifSAF5VVZ9dWJb1SLcAMtrjqQzDeCUN4F0DY0zWHzjf0i0CwPFPMxWkAaxrME1TIMiR9ECyPqvjOGeIv6HlSNZ9Vjj3MeyKotjFcfxNE+G6rlq7h58D7yMsFRrOn5tpfwANQnvqVZal3xsgy7KDGpHJlmYA60QT4MSGSK3QeEQYhie6EkKITZqmZ0wTtJsHPkRshFa78GgC8jz3mvX1XxgMsEDoi8CjAf4IfXUGG0CVtpq3GayHyKvVyke6Ugmtmh9NAJxLDPUGBzOQUiYgvrRaTHDuI/u3KIok3T9wFj7UeVDXKrrs+xwuG1vUua/rgzOVy2kEqKBLy4Z4yRzuaADU9GdTcqqivnRxteIXwK+zDCxDY8kAAAAASUVORK5CYII=&quot; alt=&quot;&quot; width=&quot;18&quot; height=&quot;18&quot;&gt;&lt;/a&gt;
-      &lt;button type=&quot;button&quot; class=&quot;th-icon&quot; aria-label=&quot;חיפוש&quot;&gt;&lt;img src=&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAOdEVYdFNvZnR3YXJlAEZpZ21hnrGWYwAAAfFJREFUeAHdVU1OwkAUHgsJCbCABQm/cbxB2bksJ1BPAK5ciiegnkCX7sQbwAkoS1fACeyGv7DpgoQGAvV7zWhq6TSt0YV+yevMvHnzvjdvZl4Z++s4CZusVqua4zhNiIYhF+oxCXT9+XzeY98hKBaLPJFIPAvHYTAPh0NjsViYMgPFr6hUKiqcj4RzCw509PlsNjshAerQXUNHTrmiKKNCoaCyKDsQkZPzHJx0bdu+s4CghZzz3G6368C2LQKph+3ERblcfoM4pVLpgUUEbLtizSBo/jNFtVrtkgKjrW82m3sWEalUqo20WRANGdCkBPv9/oJaEOiytATBNE0Lax5dZ4rSlBIgAlUQTVhMIP8voqtJCRCFS7BarcYsJjyHy6UEvwUvgUkf3IZTFhP0dqhFFsZhBAZ9cBYtFh+qWCsn8BxUOwewiCBbRN6hPi5IT0qAgzJgaNCadDod+aFlMhmdifezXC77/vmEd5DNZoe4yy10z9HPJZPJV5QLm0kiz+fzT+je0BgEV+v12vTbHVVTcWADqkdoTeRVRzuZTqduflGD+Ha7bUF/K2w+EFhZpeUaDgYQzkJAKaWXD7uusD0iCf3hoIhR+aAapQohp7Qrg6otHA0DAvpCEkoQB34S/DvOSP9jL5kixu4atEMI+z94B1JNDrdPIk31AAAAAElFTkSuQmCC&quot; alt=&quot;&quot; width=&quot;22&quot; height=&quot;22&quot;&gt;&lt;/button&gt;
+      &lt;div class=&quot;th-icons&quot;&gt;
+        &lt;a class=&quot;th-icon&quot; href=&quot;#&quot; aria-label=&quot;עגלת קניות&quot;&gt;&lt;img src=&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAOdEVYdFNvZnR3YXJlAEZpZ21hnrGWYwAAAVpJREFUeAHdVctxgzAQXckuwDnxGyZKBaEEp4I4FSQtpIN05EkHpAN3YPnC52TOfPPEgCdhgDEgX/xmQJrlaVfLW62YbdtHIhL0HzIIgifSAF5VVZ9dWJb1SLcAMtrjqQzDeCUN4F0DY0zWHzjf0i0CwPFPMxWkAaxrME1TIMiR9ECyPqvjOGeIv6HlSNZ9Vjj3MeyKotjFcfxNE+G6rlq7h58D7yMsFRrOn5tpfwANQnvqVZal3xsgy7KDGpHJlmYA60QT4MSGSK3QeEQYhie6EkKITZqmZ0wTtJsHPkRshFa78GgC8jz3mvX1XxgMsEDoi8CjAf4IfXUGG0CVtpq3GayHyKvVyke6Ugmtmh9NAJxLDPUGBzOQUiYgvrRaTHDuI/u3KIok3T9wFj7UeVDXKrrs+xwuG1vUua/rgzOVy2kEqKBLy4Z4yRzuaADU9GdTcqqivnRxteIXwK+zDCxDY8kAAAAASUVORK5CYII=&quot; alt=&quot;&quot; width=&quot;18&quot; height=&quot;18&quot;&gt;&lt;/a&gt;
+        &lt;button type=&quot;button&quot; class=&quot;th-icon&quot; aria-label=&quot;חיפוש&quot;&gt;&lt;img src=&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAOdEVYdFNvZnR3YXJlAEZpZ21hnrGWYwAAAfFJREFUeAHdVU1OwkAUHgsJCbCABQm/cbxB2bksJ1BPAK5ciiegnkCX7sQbwAkoS1fACeyGv7DpgoQGAvV7zWhq6TSt0YV+yevMvHnzvjdvZl4Z++s4CZusVqua4zhNiIYhF+oxCXT9+XzeY98hKBaLPJFIPAvHYTAPh0NjsViYMgPFr6hUKiqcj4RzCw509PlsNjshAerQXUNHTrmiKKNCoaCyKDsQkZPzHJx0bdu+s4CghZzz3G6368C2LQKph+3ERblcfoM4pVLpgUUEbLtizSBo/jNFtVrtkgKjrW82m3sWEalUqo20WRANGdCkBPv9/oJaEOiytATBNE0Lax5dZ4rSlBIgAlUQTVhMIP8voqtJCRCFS7BarcYsJjyHy6UEvwUvgUkf3IZTFhP0dqhFFsZhBAZ9cBYtFh+qWCsn8BxUOwewiCBbRN6hPi5IT0qAgzJgaNCadDod+aFlMhmdifezXC77/vmEd5DNZoe4yy10z9HPJZPJV5QLm0kiz+fzT+je0BgEV+v12vTbHVVTcWADqkdoTeRVRzuZTqduflGD+Ha7bUF/K2w+EFhZpeUaDgYQzkJAKaWXD7uusD0iCf3hoIhR+aAapQohp7Qrg6otHA0DAvpCEkoQB34S/DvOSP9jL5kixu4atEMI+z94B1JNDrdPIk31AAAAAElFTkSuQmCC&quot; alt=&quot;&quot; width=&quot;22&quot; height=&quot;22&quot;&gt;&lt;/button&gt;
+      &lt;/div&gt;
       &lt;a class=&quot;th-pill&quot; href=&quot;#&quot;&gt;שירות ואחריות&lt;/a&gt;
       &lt;button type=&quot;button&quot; class=&quot;th-burger&quot; aria-label=&quot;תפריט&quot;&gt;&lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot;&gt;&lt;path d=&quot;M4 7h16M4 12h16M4 17h16&quot;/&gt;&lt;/svg&gt;&lt;/button&gt;
     &lt;/div&gt;
@@ -941,16 +971,16 @@ form.is-sent .field,form.is-sent .btn{display:none;}
       &lt;div class=&quot;why-grid&quot;&gt;
         &lt;div class=&quot;why-cards&quot;&gt;
           &lt;article class=&quot;why-card glass glow-hover reveal&quot; style=&quot;--rx:46px;--ry:0px&quot;&gt;
-            &lt;span class=&quot;icon-wrap&quot;&gt;&lt;svg class=&quot;icon&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;use href=&quot;#ic-israel&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;
-            &lt;div&gt;&lt;h4&gt;מיוצר בישראל ומותאם לישראל&lt;/h4&gt;&lt;p&gt;ממשק מלא בעברית, הגדרת שעוני שבת וחג ומותאם להרגלי הצריכה של הקהל הישראלי&lt;/p&gt;&lt;/div&gt;
+            &lt;span class=&quot;icon-wrap&quot;&gt;&lt;svg class=&quot;icon&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;use href=&quot;#ic-layers&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;
+            &lt;div&gt;&lt;h4&gt;כל מערכות המיזוג במערכת הפעלה אחת&lt;/h4&gt;&lt;p&gt;בין אם אתם בעלי חלל מסחרי ובין אם בית פרטי, TadiCore מאפשר לכם לחבר את כל המזגנים של תדיראן למערכת הפעלה אחת (כל עוד יש למזגנים העיליים חיבור &lt;bdi&gt;Wi-Fi&lt;/bdi&gt;)&lt;/p&gt;&lt;/div&gt;
           &lt;/article&gt;
           &lt;article class=&quot;why-card glass glow-hover reveal&quot; style=&quot;--rx:46px;--ry:0px;--d:.1s&quot;&gt;
             &lt;span class=&quot;icon-wrap&quot;&gt;&lt;svg class=&quot;icon&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;use href=&quot;#ic-wifi&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;
             &lt;div&gt;&lt;h4&gt;גמישות התקנה מלאה&lt;/h4&gt;&lt;p&gt;אין צורך בארון תקשורת ייעודי. ניתן להתקנה בכל חלל עם &lt;bdi&gt;Wi-Fi&lt;/bdi&gt;, בממ״דים או בחיבור קווי (&lt;bdi&gt;Ethernet PoE&lt;/bdi&gt;)&lt;/p&gt;&lt;/div&gt;
           &lt;/article&gt;
           &lt;article class=&quot;why-card glass glow-hover reveal&quot; style=&quot;--rx:46px;--ry:0px;--d:.2s&quot;&gt;
-            &lt;span class=&quot;icon-wrap&quot;&gt;&lt;svg class=&quot;icon&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;use href=&quot;#ic-layers&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;
-            &lt;div&gt;&lt;h4&gt;כל מערכות המיזוג באפליקציה אחת&lt;/h4&gt;&lt;p&gt;בין אם אתם בעלי חלל מסחרי ובין אם בית פרטי, TadiCore מאפשר לכם לחבר את כל המזגנים של תדיראן לאפליקציה אחת (כל עוד יש למזגנים העיליים חיבור &lt;bdi&gt;Wi-Fi&lt;/bdi&gt;)&lt;/p&gt;&lt;/div&gt;
+            &lt;span class=&quot;icon-wrap&quot;&gt;&lt;svg class=&quot;icon&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;use href=&quot;#ic-israel&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;
+            &lt;div&gt;&lt;h4&gt;ממשק מותאם לצרכן הישראלי&lt;/h4&gt;&lt;p&gt;ממשק מלא בעברית, הגדרת שעוני שבת וחג ומותאם להרגלי הצריכה של הקהל הישראלי&lt;/p&gt;&lt;/div&gt;
           &lt;/article&gt;
         &lt;/div&gt;
         &lt;div class=&quot;why-device reveal&quot; style=&quot;--rx:-60px;--ry:0px&quot;&gt;
@@ -1143,7 +1173,7 @@ form.is-sent .field,form.is-sent .btn{display:none;}
           מה היתרון של TadiCore על פני רכיבי צד-ג&#x27; ששימשו עד היום?
           &lt;svg class=&quot;icon&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;use href=&quot;#ic-chevron-d&quot;/&gt;&lt;/svg&gt;
         &lt;/button&gt;
-        &lt;div class=&quot;faq-a&quot; id=&quot;faq-a5&quot;&gt;&lt;div&gt;&lt;p&gt;החיבור של מערכת ה-VRF לאפליקציית תדיראן מאפשר ליהנות מכל התכונות והיתרונות של האפליקציה בכל יחידות הפנים (כיבוי מרחוק, הדלקה, מעקב, הרשאות, שעונים חכמים ועוד), וכמובן שירות ישיר מהאפליקציה למחלקת השירות של תדיראן&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;
+        &lt;div class=&quot;faq-a&quot; id=&quot;faq-a5&quot;&gt;&lt;div&gt;&lt;p&gt;החיבור של מערכת ה-VRF למערכת ההפעלה MY TADIRAN מאפשר ליהנות מכל התכונות והיתרונות של מערכת ההפעלה בכל יחידות הפנים (כיבוי מרחוק, הדלקה, מעקב, הרשאות, שעונים חכמים ועוד), וכמובן שירות ישיר ממערכת ההפעלה MY TADIRAN למחלקת השירות של תדיראן&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;
       &lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
@@ -1185,7 +1215,10 @@ form.is-sent .field,form.is-sent .btn{display:none;}
             &lt;/div&gt;
             &lt;div class=&quot;field&quot; id=&quot;field-city&quot;&gt;
               &lt;label for=&quot;city&quot;&gt;עיר&lt;/label&gt;
-              &lt;input type=&quot;text&quot; id=&quot;city&quot; name=&quot;city&quot; required autocomplete=&quot;address-level2&quot;&gt;
+              &lt;div class=&quot;combo&quot;&gt;
+                &lt;input type=&quot;text&quot; id=&quot;city&quot; name=&quot;city&quot; required autocomplete=&quot;off&quot; role=&quot;combobox&quot; aria-expanded=&quot;false&quot; aria-controls=&quot;cityList&quot; aria-autocomplete=&quot;list&quot;&gt;
+                &lt;ul class=&quot;combo-list&quot; id=&quot;cityList&quot; role=&quot;listbox&quot; hidden&gt;&lt;/ul&gt;
+              &lt;/div&gt;
               &lt;span class=&quot;field-error&quot; id=&quot;err-city&quot;&gt;&lt;/span&gt;
             &lt;/div&gt;
             &lt;div class=&quot;field&quot; id=&quot;field-email&quot;&gt;
@@ -1521,13 +1554,57 @@ form.is-sent .field,form.is-sent .btn{display:none;}
     if(mq.addEventListener) mq.addEventListener(&#x27;change&#x27;, sync); else if(mq.addListener) mq.addListener(sync);
   })();
 
+  // City: autocomplete dropdown (pick from the list, like the Tadiran site)
+  (function(){
+    var CITIES = [&quot;אבו גוש&quot;, &quot;אבו סנאן&quot;, &quot;אביחיל&quot;, &quot;אבירים&quot;, &quot;אבן יהודה&quot;, &quot;אבן שמואל&quot;, &quot;אופקים&quot;, &quot;אור יהודה&quot;, &quot;אור עקיבא&quot;, &quot;אזור&quot;, &quot;אילת&quot;, &quot;אלעד&quot;, &quot;אלפי מנשה&quot;, &quot;אלקנה&quot;, &quot;אפרת&quot;, &quot;אריאל&quot;, &quot;אשדוד&quot;, &quot;אשקלון&quot;, &quot;באקה אל-גרביה&quot;, &quot;באר שבע&quot;, &quot;בית דגן&quot;, &quot;בית חנניה&quot;, &quot;בית שאן&quot;, &quot;בית שמש&quot;, &quot;ביתר עילית&quot;, &quot;בני ברק&quot;, &quot;בנימינה&quot;, &quot;בת ים&quot;, &quot;גבעת ברנר&quot;, &quot;גבעת זאב&quot;, &quot;גבעת עדה&quot;, &quot;גבעת שמואל&quot;, &quot;גבעתיים&quot;, &quot;גדות&quot;, &quot;גדרה&quot;, &quot;גזר&quot;, &quot;גן יבנה&quot;, &quot;גן שלמה&quot;, &quot;גן שמואל&quot;, &quot;גני תקווה&quot;, &quot;גשר הזיו&quot;, &quot;דאלית אל-כרמל&quot;, &quot;דבוריה&quot;, &quot;דייר חנא&quot;, &quot;דימונה&quot;, &quot;דליה&quot;, &quot;דן&quot;, &quot;הוד הכרמל&quot;, &quot;הוד השרון&quot;, &quot;הר אדר&quot;, &quot;הרצליה&quot;, &quot;הרצליה פיתוח&quot;, &quot;זכרון יעקב&quot;, &quot;זמר&quot;, &quot;חבצלת השרון&quot;, &quot;חדרה&quot;, &quot;חולון&quot;, &quot;חופית&quot;, &quot;חיפה&quot;, &quot;חצור הגלילית&quot;, &quot;חריש&quot;, &quot;טבריה&quot;, &quot;טורעאן&quot;, &quot;טייבה&quot;, &quot;טירת כרמל&quot;, &quot;טמרה&quot;, &quot;יאנוח-ג&#x27;ת&quot;, &quot;יבנה&quot;, &quot;יגור&quot;, &quot;יד בנימין&quot;, &quot;יהוד-מונוסון&quot;, &quot;יסוד&quot;, &quot;יסוד המעלה&quot;, &quot;יפיע&quot;, &quot;יקנעם עילית&quot;, &quot;ירוחם&quot;, &quot;ירושלים&quot;, &quot;כאבול&quot;, &quot;כוכב יאיר&quot;, &quot;כסרא-סמיע&quot;, &quot;כפר גלעדי&quot;, &quot;כפר ורדים&quot;, &quot;כפר חב״ד&quot;, &quot;כפר יונה&quot;, &quot;כפר כנא&quot;, &quot;כפר מל״ל&quot;, &quot;כפר מנדא&quot;, &quot;כפר סבא&quot;, &quot;כפר קאסם&quot;, &quot;כפר קרע&quot;, &quot;כפר תבור&quot;, &quot;כרמיאל&quot;, &quot;לוד&quot;, &quot;לפיד&quot;, &quot;מבשרת ציון&quot;, &quot;מג&#x27;דל שמס&quot;, &quot;מגדל העמק&quot;, &quot;מודיעין עילית&quot;, &quot;מודיעין-מכבים-רעות&quot;, &quot;מזכרת בתיה&quot;, &quot;מיתר&quot;, &quot;מכבים&quot;, &quot;מעגן מיכאל&quot;, &quot;מעיליא&quot;, &quot;מעלה אדומים&quot;, &quot;מעלות-תרשיחא&quot;, &quot;מצפה רמון&quot;, &quot;משהד&quot;, &quot;משמר השרון&quot;, &quot;נהריה&quot;, &quot;נווה אילן&quot;, &quot;נווה ים&quot;, &quot;נחלים&quot;, &quot;נחף&quot;, &quot;נחשון&quot;, &quot;נס ציונה&quot;, &quot;נצרת&quot;, &quot;נצרת עילית (נוף הגליל)&quot;, &quot;נשר&quot;, &quot;נתיב העשרה&quot;, &quot;נתיבות&quot;, &quot;נתיבות העשרה&quot;, &quot;נתניה&quot;, &quot;סחנין&quot;, &quot;עומר&quot;, &quot;עין חרוד&quot;, &quot;עין מאהל&quot;, &quot;עכו&quot;, &quot;עספיא&quot;, &quot;עפולה&quot;, &quot;עראבה&quot;, &quot;ערד&quot;, &quot;עתלית&quot;, &quot;פוריידיס&quot;, &quot;פרדס חנה&quot;, &quot;פרדס חנה-כרכור&quot;, &quot;פרדסיה&quot;, &quot;פתח תקווה&quot;, &quot;צופית&quot;, &quot;צור הדסה&quot;, &quot;צורן&quot;, &quot;צפת&quot;, &quot;קדימה-צורן&quot;, &quot;קיבוץ דפנה&quot;, &quot;קלנסווה&quot;, &quot;קצרין&quot;, &quot;קריית אונו&quot;, &quot;קריית ארבע&quot;, &quot;קריית אתא&quot;, &quot;קריית ביאליק&quot;, &quot;קריית גת&quot;, &quot;קריית טבעון&quot;, &quot;קריית ים&quot;, &quot;קריית מוצקין&quot;, &quot;קריית מלאכי&quot;, &quot;קריית שמונה&quot;, &quot;ראמה&quot;, &quot;ראש העין&quot;, &quot;ראש פינה&quot;, &quot;ראשון לציון&quot;, &quot;רהט&quot;, &quot;רחובות&quot;, &quot;רכסים&quot;, &quot;רמות השבים&quot;, &quot;רמלה&quot;, &quot;רמת גן&quot;, &quot;רמת השרון&quot;, &quot;רמת ישי&quot;, &quot;רעננה&quot;, &quot;שבלי-אום אל-גנם&quot;, &quot;שגב-שלום&quot;, &quot;שדה ורבורג&quot;, &quot;שדה יעקב&quot;, &quot;שדרות&quot;, &quot;שוהם&quot;, &quot;שלומי&quot;, &quot;שפרעם&quot;, &quot;תל אביב-יפו&quot;, &quot;תל יצחק&quot;, &quot;תל מונד&quot;, &quot;תל שבע&quot;, &quot;תמרה&quot;];
+    var input = document.getElementById(&#x27;city&#x27;), list = document.getElementById(&#x27;cityList&#x27;);
+    if(!input || !list) return;
+    var active = -1, items = [];
+    function close(){ list.hidden = true; input.setAttribute(&#x27;aria-expanded&#x27;,&#x27;false&#x27;); active = -1; }
+    function choose(name){ input.value = name; input.dataset.selected = &#x27;1&#x27;; close(); input.dispatchEvent(new Event(&#x27;change&#x27;)); }
+    function render(q){
+      q = q.trim();
+      var res = q ? CITIES.filter(function(c){ return c.indexOf(q) !== -1; }).sort(function(a,b){ return (a.indexOf(q)===0?0:1) - (b.indexOf(q)===0?0:1); }) : CITIES;
+      res = res.slice(0, 60);
+      list.innerHTML = &#x27;&#x27;;
+      items = [];
+      if(!res.length){
+        var li = document.createElement(&#x27;li&#x27;); li.className = &#x27;no-results&#x27;; li.textContent = &#x27;אין תוצאה&#x27;; list.appendChild(li);
+      } else {
+        res.forEach(function(name, i){
+          var li = document.createElement(&#x27;li&#x27;); li.setAttribute(&#x27;role&#x27;,&#x27;option&#x27;); li.textContent = name;
+          li.addEventListener(&#x27;mousedown&#x27;, function(e){ e.preventDefault(); });
+          li.addEventListener(&#x27;click&#x27;, function(){ choose(name); });
+          list.appendChild(li); items.push(li);
+        });
+      }
+      active = -1;
+      list.hidden = false; input.setAttribute(&#x27;aria-expanded&#x27;,&#x27;true&#x27;);
+    }
+    function setActive(i){
+      if(!items.length) return;
+      active = (i + items.length) % items.length;
+      items.forEach(function(li, k){ li.setAttribute(&#x27;aria-selected&#x27;, k === active ? &#x27;true&#x27; : &#x27;false&#x27;); });
+      items[active].scrollIntoView({block:&#x27;nearest&#x27;});
+    }
+    input.addEventListener(&#x27;focus&#x27;, function(){ render(input.value); });
+    input.addEventListener(&#x27;input&#x27;, function(){ input.dataset.selected = &#x27;0&#x27;; render(input.value); });
+    input.addEventListener(&#x27;keydown&#x27;, function(e){
+      if(e.key === &#x27;ArrowDown&#x27;){ e.preventDefault(); if(list.hidden) render(input.value); setActive(active + 1); }
+      else if(e.key === &#x27;ArrowUp&#x27;){ e.preventDefault(); setActive(active - 1); }
+      else if(e.key === &#x27;Enter&#x27;){ if(!list.hidden &amp;&amp; active &gt; -1){ e.preventDefault(); choose(items[active].textContent); } }
+      else if(e.key === &#x27;Escape&#x27;){ close(); }
+    });
+    input.addEventListener(&#x27;blur&#x27;, function(){ if(input.dataset.selected !== &#x27;1&#x27;) input.value = &#x27;&#x27;; close(); });
+  })();
+
   // Form validation + fake submit
   var form = document.getElementById(&#x27;leadForm&#x27;);
   if(form){
     var fields = {
       fullName: function(){ return form.elements.fullName.value.trim().length &gt;= 2 ? &#x27;&#x27; : &#x27;נא להזין שם מלא&#x27;; },
       phone: function(){ return /^0\d{1,2}-?\d{7}$/.test(form.elements.phone.value.replace(/\s/g,&#x27;&#x27;)) ? &#x27;&#x27; : &#x27;נא להזין מספר טלפון תקין&#x27;; },
-      city: function(){ return form.elements.city.value.trim().length &gt;= 2 ? &#x27;&#x27; : &#x27;נא להזין עיר&#x27;; },
+      city: function(){ return form.elements.city.dataset.selected === &#x27;1&#x27; ? &#x27;&#x27; : &#x27;נא לבחור עיר מהרשימה&#x27;; },
       email: function(){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.elements.email.value.trim()) ? &#x27;&#x27; : &#x27;נא להזין כתובת מייל תקינה&#x27;; },
       hasVrf: function(){ return form.elements.hasVrf.checked ? &#x27;&#x27; : &#x27;יש לסמן שיש לך מערכת VRF&#x27;; },
       policy: function(){ return form.elements.policy.checked ? &#x27;&#x27; : &#x27;יש לאשר את מדיניות הפרטיות&#x27;; }
