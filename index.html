@@ -719,6 +719,19 @@ form.is-sent .field,form.is-sent .btn{display:none;}
 .tab-btn[aria-selected=&quot;true&quot;]:hover::after{opacity:1;}
 .tab-panels{padding:36px 0 0;}
 
+/* ---------- Audience bullets (exact copy) ---------- */
+.tab-bullets{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:14px 18px;}
+.tab-bullets li{display:flex;align-items:center;gap:14px;padding:18px 20px;border-radius:var(--radius-md);background:#fff;border:1px solid var(--hairline);font-size:16px;font-weight:600;line-height:1.55;color:var(--text);text-align:start;transition:background .25s,border-color .25s,transform .35s var(--ease-out);}
+.tab-bullets li:hover{background:var(--accent-soft);border-color:rgba(33,148,190,.3);transform:translateY(-2px);}
+.tab-bullets .icon-wrap{flex:none;width:40px;height:40px;border-radius:12px;background:var(--accent-soft);color:var(--accent-strong);display:grid;place-items:center;}
+.tab-bullets li:hover .icon-wrap{background:#fff;}
+.tab-bullets .icon-wrap svg{width:20px;height:20px;}
+.tab-bullets bdi{white-space:nowrap;}
+.tab-panel.is-active{display:block;}
+.tab-bullets li:last-child:nth-child(odd){grid-column:1 / -1;justify-self:center;width:calc(50% - 9px);}
+@media (max-width:720px){.tab-bullets li:last-child:nth-child(odd){width:100%;}}
+@media (max-width:720px){.tab-bullets{grid-template-columns:1fr;gap:10px;}.tab-bullets li{padding:14px 16px;font-size:15px;}}
+
 /* ---------- Hotspots: tap-to-open ---------- */
 .hero-hotspot.is-open .tip{opacity:1;pointer-events:auto;transform:translateX(50%) translateY(0);}
 .hero-hotspot.h2.is-open .tip{transform:translateY(0);}
@@ -884,7 +897,7 @@ form.is-sent .field,form.is-sent .btn{display:none;}
     &lt;span class=&quot;cue-line&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
   &lt;/a&gt;
   &lt;div class=&quot;container&quot;&gt;
-    &lt;p class=&quot;scrub&quot; id=&quot;statement-text&quot; data-scrub&gt;כל מערכות המיזוג במערכת הפעלה אחת – &lt;bdi class=&quot;em&quot;&gt;My&amp;nbsp;Tadiran&lt;/bdi&gt;, ובהתאמה לאורח החיים הישראלי&lt;/p&gt;
+    &lt;p class=&quot;scrub&quot; id=&quot;statement-text&quot; data-scrub&gt;כל מערכות המיזוג במערכת הפעלה אחת – &lt;bdi class=&quot;em&quot;&gt;My&amp;nbsp;Tadiran&lt;/bdi&gt;&lt;/p&gt;
   &lt;/div&gt;
 &lt;/section&gt;
 
@@ -920,10 +933,39 @@ form.is-sent .field,form.is-sent .btn{display:none;}
   &lt;/div&gt;
 &lt;/section&gt;
 
-&lt;!-- AUDIENCE TABS --&gt;
-&lt;section id=&quot;audience&quot; class=&quot;section&quot;&gt;
+&lt;!-- WHY TADICORE (device + three cards, all text visible) --&gt;
+&lt;section id=&quot;film-app&quot; class=&quot;section why&quot; aria-label=&quot;למה TadiCore משנה את כללי המשחק&quot; style=&quot;background:var(--bg);&quot;&gt;
   &lt;div class=&quot;container&quot;&gt;
-    &lt;div class=&quot;section-head reveal&quot;&gt;
+    &lt;div class=&quot;why-frame&quot;&gt;
+      &lt;h3 class=&quot;why-title reveal&quot;&gt;למה TadiCore משנה את כללי המשחק?&lt;/h3&gt;
+      &lt;div class=&quot;why-grid&quot;&gt;
+        &lt;div class=&quot;why-cards&quot;&gt;
+          &lt;article class=&quot;why-card glass glow-hover reveal&quot; style=&quot;--rx:46px;--ry:0px&quot;&gt;
+            &lt;span class=&quot;icon-wrap&quot;&gt;&lt;svg class=&quot;icon&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;use href=&quot;#ic-israel&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;
+            &lt;div&gt;&lt;h4&gt;מיוצר בישראל ומותאם לישראל&lt;/h4&gt;&lt;p&gt;ממשק מלא בעברית, הגדרת שעוני שבת וחג ומותאם להרגלי הצריכה של הקהל הישראלי&lt;/p&gt;&lt;/div&gt;
+          &lt;/article&gt;
+          &lt;article class=&quot;why-card glass glow-hover reveal&quot; style=&quot;--rx:46px;--ry:0px;--d:.1s&quot;&gt;
+            &lt;span class=&quot;icon-wrap&quot;&gt;&lt;svg class=&quot;icon&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;use href=&quot;#ic-wifi&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;
+            &lt;div&gt;&lt;h4&gt;גמישות התקנה מלאה&lt;/h4&gt;&lt;p&gt;אין צורך בארון תקשורת ייעודי. ניתן להתקנה בכל חלל עם &lt;bdi&gt;Wi-Fi&lt;/bdi&gt;, בממ״דים או בחיבור קווי (&lt;bdi&gt;Ethernet PoE&lt;/bdi&gt;)&lt;/p&gt;&lt;/div&gt;
+          &lt;/article&gt;
+          &lt;article class=&quot;why-card glass glow-hover reveal&quot; style=&quot;--rx:46px;--ry:0px;--d:.2s&quot;&gt;
+            &lt;span class=&quot;icon-wrap&quot;&gt;&lt;svg class=&quot;icon&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;use href=&quot;#ic-layers&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;
+            &lt;div&gt;&lt;h4&gt;כל מערכות המיזוג באפליקציה אחת&lt;/h4&gt;&lt;p&gt;בין אם אתם בעלי חלל מסחרי ובין אם בית פרטי, TadiCore מאפשר לכם לחבר את כל המזגנים של תדיראן לאפליקציה אחת (כל עוד יש למזגנים העיליים חיבור &lt;bdi&gt;Wi-Fi&lt;/bdi&gt;)&lt;/p&gt;&lt;/div&gt;
+          &lt;/article&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;why-device reveal&quot; style=&quot;--rx:-60px;--ry:0px&quot;&gt;
+          &lt;span class=&quot;glow-orb&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
+          &lt;img src=&quot;data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==&quot; data-clone=&quot;1&quot; alt=&quot;רכיב ה-TadiCore&quot;&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- AUDIENCE TABS --&gt;
+&lt;section id=&quot;audience&quot; class=&quot;section&quot; style=&quot;background:var(--bg-soft);&quot;&gt;
+  &lt;div class=&quot;container&quot;&gt;
+    &lt;div class=&quot;section-head center reveal&quot;&gt;
       &lt;h2&gt;ערך אמיתי לכל קהל&lt;/h2&gt;
     &lt;/div&gt;
 
@@ -945,65 +987,33 @@ form.is-sent .field,form.is-sent .btn{display:none;}
 
       &lt;div class=&quot;tab-panels&quot;&gt;
         &lt;div class=&quot;tab-panel is-active&quot; id=&quot;panel-residents&quot; role=&quot;tabpanel&quot; aria-labelledby=&quot;tab-residents&quot;&gt;
-          &lt;div&gt;
-            &lt;h3&gt;שליטה חכמה, מכל מקום&lt;/h3&gt;
-            &lt;p&gt;ניהול הבית שלכם דרך אפליקציית My Tadiran — מכל מקום, בכל שעה, בעברית מלאה.&lt;/p&gt;
-            &lt;ul class=&quot;tab-feature-list&quot;&gt;
-              &lt;li&gt;&lt;span class=&quot;icon-wrap&quot;&gt;&lt;svg class=&quot;icon&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;use href=&quot;#ic-wifi&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;div&gt;&lt;b&gt;שליטה מכל מקום&lt;/b&gt;&lt;span&gt;הפעלה, כיבוי וקביעת טמפרטורה מהנייד, כולל תמיכה בעוזרים קוליים.&lt;/span&gt;&lt;/div&gt;&lt;/li&gt;
-              &lt;li&gt;&lt;span class=&quot;icon-wrap&quot;&gt;&lt;svg class=&quot;icon&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;use href=&quot;#ic-moon&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;div&gt;&lt;b&gt;שעון שבת וחג&lt;/b&gt;&lt;span&gt;הגדרת לוחות זמנים אוטומטיים המותאמים ללוח השנה העברי.&lt;/span&gt;&lt;/div&gt;&lt;/li&gt;
-              &lt;li&gt;&lt;span class=&quot;icon-wrap&quot;&gt;&lt;svg class=&quot;icon&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;use href=&quot;#ic-chart&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;div&gt;&lt;b&gt;דשבורד צריכת אנרגיה&lt;/b&gt;&lt;span&gt;מעקב אחר צריכת החשמל של כל יחידה בזמן אמת.&lt;/span&gt;&lt;/div&gt;&lt;/li&gt;
-              &lt;li&gt;&lt;span class=&quot;icon-wrap&quot;&gt;&lt;svg class=&quot;icon&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;use href=&quot;#ic-users&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;div&gt;&lt;b&gt;הרשאות משפחתיות&lt;/b&gt;&lt;span&gt;ניהול הרשאות שליטה לכל בני המשפחה בנפרד.&lt;/span&gt;&lt;/div&gt;&lt;/li&gt;
-              &lt;li&gt;&lt;span class=&quot;icon-wrap&quot;&gt;&lt;svg class=&quot;icon&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;use href=&quot;#ic-message&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;div&gt;&lt;b&gt;שירות לקוחות מבוסס AI&lt;/b&gt;&lt;span&gt;מענה מיידי לשאלות נפוצות ישירות מתוך האפליקציה.&lt;/span&gt;&lt;/div&gt;&lt;/li&gt;
-            &lt;/ul&gt;
-          &lt;/div&gt;
-          &lt;div class=&quot;tab-side&quot;&gt;
-            &lt;dl&gt;
-              &lt;div class=&quot;stat-line&quot;&gt;&lt;dt&gt;זמינות שליטה&lt;/dt&gt;&lt;dd&gt;24/7&lt;/dd&gt;&lt;/div&gt;
-              &lt;div class=&quot;stat-line&quot;&gt;&lt;dt&gt;עוזרים קוליים&lt;/dt&gt;&lt;dd&gt;נתמך&lt;/dd&gt;&lt;/div&gt;
-              &lt;div class=&quot;stat-line&quot;&gt;&lt;dt&gt;פרופילי משתמש&lt;/dt&gt;&lt;dd&gt;ללא הגבלה&lt;/dd&gt;&lt;/div&gt;
-            &lt;/dl&gt;
-          &lt;/div&gt;
+          &lt;ul class=&quot;tab-bullets&quot;&gt;
+            &lt;li&gt;&lt;span class=&quot;icon-wrap&quot;&gt;&lt;svg class=&quot;icon&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;use href=&quot;#ic-wifi&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span&gt;שליטה מלאה בטמפרטורה מכל מקום בעולם דרך מערכת ההפעלה &lt;bdi&gt;My&amp;nbsp;Tadiran&lt;/bdi&gt;&lt;/span&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;span class=&quot;icon-wrap&quot;&gt;&lt;svg class=&quot;icon&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;use href=&quot;#ic-radio&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span&gt;שליטה קולית חכמה באמצעות &lt;bdi&gt;Alexa&lt;/bdi&gt;, &lt;bdi&gt;Google Home&lt;/bdi&gt; ו-&lt;bdi&gt;Siri&lt;/bdi&gt;&lt;/span&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;span class=&quot;icon-wrap&quot;&gt;&lt;svg class=&quot;icon&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;use href=&quot;#ic-chart&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span&gt;כיבוי אוטומטי ביציאה מהבית, טיימרים ו-&lt;bdi&gt;Dashboard&lt;/bdi&gt; מעקב צריכת אנרגיה&lt;/span&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;span class=&quot;icon-wrap&quot;&gt;&lt;svg class=&quot;icon&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;use href=&quot;#ic-users&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span&gt;שיתוף הרשאות קל בין כל בני המשפחה&lt;/span&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;span class=&quot;icon-wrap&quot;&gt;&lt;svg class=&quot;icon&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;use href=&quot;#ic-layers&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span&gt;שליטה וניהול מספר מזגנים/חדרים/משתמשים&lt;/span&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;span class=&quot;icon-wrap&quot;&gt;&lt;svg class=&quot;icon&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;use href=&quot;#ic-zap&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span&gt;חיסכון בחשמל עם כיבוי אוטומטי בהתרחקות&lt;/span&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;span class=&quot;icon-wrap&quot;&gt;&lt;svg class=&quot;icon&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;use href=&quot;#ic-moon&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span&gt;שעון שבת חכם וטיימרים מותאמים אישית&lt;/span&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;span class=&quot;icon-wrap&quot;&gt;&lt;svg class=&quot;icon&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;use href=&quot;#ic-message&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span&gt;שירות לקוחות ישיר מהאפליקציה&lt;/span&gt;&lt;/li&gt;
+          &lt;/ul&gt;
         &lt;/div&gt;
 
         &lt;div class=&quot;tab-panel&quot; id=&quot;panel-installers&quot; role=&quot;tabpanel&quot; aria-labelledby=&quot;tab-installers&quot; hidden&gt;
-          &lt;div&gt;
-            &lt;h3&gt;פחות קריאות שירות מיותרות&lt;/h3&gt;
-            &lt;p&gt;כלים מקצועיים שמצמצמים ביקורי שטח מיותרים ומאיצים אבחון תקלות מרחוק.&lt;/p&gt;
-            &lt;ul class=&quot;tab-feature-list&quot;&gt;
-              &lt;li&gt;&lt;span class=&quot;icon-wrap&quot;&gt;&lt;svg class=&quot;icon&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;use href=&quot;#ic-tag&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;div&gt;&lt;b&gt;שיוך יחידות בשם&lt;/b&gt;&lt;span&gt;קישור כל יחידה פנימית לשם מזוהה לניהול פשוט באתר הלקוח.&lt;/span&gt;&lt;/div&gt;&lt;/li&gt;
-              &lt;li&gt;&lt;span class=&quot;icon-wrap&quot;&gt;&lt;svg class=&quot;icon&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;use href=&quot;#ic-activity&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;div&gt;&lt;b&gt;תצוגת פקודות בזמן אמת&lt;/b&gt;&lt;span&gt;מעקב חי אחר הפקודות שנשלחות למערכת, לצורך אבחון מדויק.&lt;/span&gt;&lt;/div&gt;&lt;/li&gt;
-              &lt;li&gt;&lt;span class=&quot;icon-wrap&quot;&gt;&lt;svg class=&quot;icon&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;use href=&quot;#ic-monitor&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;div&gt;&lt;b&gt;אבחון מרחוק&lt;/b&gt;&lt;span&gt;זיהוי תקלות מבלי לצאת לשטח — פחות קריאות סרק.&lt;/span&gt;&lt;/div&gt;&lt;/li&gt;
-              &lt;li&gt;&lt;span class=&quot;icon-wrap&quot;&gt;&lt;svg class=&quot;icon&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;use href=&quot;#ic-radio&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;div&gt;&lt;b&gt;תמיכה בחיישני ZigBee&lt;/b&gt;&lt;span&gt;הרחבת המערכת עם חיישני טמפרטורה, נוכחות ואיכות אוויר.&lt;/span&gt;&lt;/div&gt;&lt;/li&gt;
-              &lt;li&gt;&lt;span class=&quot;icon-wrap&quot;&gt;&lt;svg class=&quot;icon&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;use href=&quot;#ic-message&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;div&gt;&lt;b&gt;בוט תמיכה ייעודי ל-TadiCore&lt;/b&gt;&lt;span&gt;מענה טכני מיידי מבוסס AI לשאלות התקנה ותפעול.&lt;/span&gt;&lt;/div&gt;&lt;/li&gt;
-            &lt;/ul&gt;
-          &lt;/div&gt;
-          &lt;div class=&quot;tab-side&quot;&gt;
-            &lt;dl&gt;
-              &lt;div class=&quot;stat-line&quot;&gt;&lt;dt&gt;אבחון מרחוק&lt;/dt&gt;&lt;dd&gt;Real-time&lt;/dd&gt;&lt;/div&gt;
-              &lt;div class=&quot;stat-line&quot;&gt;&lt;dt&gt;חיישנים נתמכים&lt;/dt&gt;&lt;dd&gt;ZigBee&lt;/dd&gt;&lt;/div&gt;
-              &lt;div class=&quot;stat-line&quot;&gt;&lt;dt&gt;תמיכה טכנית&lt;/dt&gt;&lt;dd&gt;AI Bot&lt;/dd&gt;&lt;/div&gt;
-            &lt;/dl&gt;
-          &lt;/div&gt;
+          &lt;ul class=&quot;tab-bullets&quot;&gt;
+            &lt;li&gt;&lt;span class=&quot;icon-wrap&quot;&gt;&lt;svg class=&quot;icon&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;use href=&quot;#ic-tag&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span&gt;התקנה מהירה ופשוטה עם שיוך שמי של יחידות לחדרים (סלון, מטבח, חדר ילדים)&lt;/span&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;span class=&quot;icon-wrap&quot;&gt;&lt;svg class=&quot;icon&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;use href=&quot;#ic-monitor&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span&gt;צג בקרה ייעודי לזיהוי פקודות וטמפרטורה בזמן אמת&lt;/span&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;span class=&quot;icon-wrap&quot;&gt;&lt;svg class=&quot;icon&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;use href=&quot;#ic-activity&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span&gt;קיצור זמני דיאגנוסטיקה ואבחון תקלות מרחוק (מונע ביקורי סרק)&lt;/span&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;span class=&quot;icon-wrap&quot;&gt;&lt;svg class=&quot;icon&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;use href=&quot;#ic-radio&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span&gt;תמיכה בחיישנים ואביזרי קצה ב-&lt;bdi&gt;ZigBee&lt;/bdi&gt;&lt;/span&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;span class=&quot;icon-wrap&quot;&gt;&lt;svg class=&quot;icon&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;use href=&quot;#ic-message&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span&gt;מערך תמיכה מקיף ועכשיו חדש! בוט תמיכה &lt;bdi&gt;AI&lt;/bdi&gt; גם ל-TadiCore&lt;/span&gt;&lt;/li&gt;
+          &lt;/ul&gt;
         &lt;/div&gt;
 
         &lt;div class=&quot;tab-panel&quot; id=&quot;panel-bms&quot; role=&quot;tabpanel&quot; aria-labelledby=&quot;tab-bms&quot; hidden&gt;
-          &lt;div&gt;
-            &lt;h3&gt;ניטור מרכזי לכל הנכס&lt;/h3&gt;
-            &lt;p&gt;אינטגרציה ישירה למערכות בקרת מבנה (BMS) עם תמיכה מלאה בפרוטוקולי תעשייה.&lt;/p&gt;
-            &lt;ul class=&quot;tab-feature-list&quot;&gt;
-              &lt;li&gt;&lt;span class=&quot;icon-wrap&quot;&gt;&lt;svg class=&quot;icon&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;use href=&quot;#ic-server&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;div&gt;&lt;b&gt;Modbus RTU &amp;amp; Modbus TCP&lt;/b&gt;&lt;span&gt;תמיכה native בשני הפרוטוקולים המובילים בתעשיית ה-BMS.&lt;/span&gt;&lt;/div&gt;&lt;/li&gt;
-              &lt;li&gt;&lt;span class=&quot;icon-wrap&quot;&gt;&lt;svg class=&quot;icon&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;use href=&quot;#ic-monitor&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;div&gt;&lt;b&gt;ניטור מסך מרכזי&lt;/b&gt;&lt;span&gt;מעקב רציף אחר כלל היחידות בנכס ממסך בקרה אחד.&lt;/span&gt;&lt;/div&gt;&lt;/li&gt;
-              &lt;li&gt;&lt;span class=&quot;icon-wrap&quot;&gt;&lt;svg class=&quot;icon&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;use href=&quot;#ic-layers&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;div&gt;&lt;b&gt;ריבוי יחידות&lt;/b&gt;&lt;span&gt;עד 64 יחידות פנים במתאם אחד, לניהול נכסים בקנה מידה גדול.&lt;/span&gt;&lt;/div&gt;&lt;/li&gt;
-              &lt;li&gt;&lt;span class=&quot;icon-wrap&quot;&gt;&lt;svg class=&quot;icon&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;use href=&quot;#ic-shield&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;div&gt;&lt;b&gt;אמינות תעשייתית&lt;/b&gt;&lt;span&gt;עמידה בתקני CE ו-RoHS להתקנה במבני ציבור ומסחר.&lt;/span&gt;&lt;/div&gt;&lt;/li&gt;
-            &lt;/ul&gt;
-          &lt;/div&gt;
-          &lt;div class=&quot;tab-side&quot;&gt;
-            &lt;dl&gt;
-              &lt;div class=&quot;stat-line&quot;&gt;&lt;dt&gt;פרוטוקולים&lt;/dt&gt;&lt;dd&gt;Modbus RTU/TCP&lt;/dd&gt;&lt;/div&gt;
-              &lt;div class=&quot;stat-line&quot;&gt;&lt;dt&gt;קיבולת יחידות&lt;/dt&gt;&lt;dd&gt;עד 64&lt;/dd&gt;&lt;/div&gt;
-              &lt;div class=&quot;stat-line&quot;&gt;&lt;dt&gt;ניטור&lt;/dt&gt;&lt;dd&gt;מסך מרכזי&lt;/dd&gt;&lt;/div&gt;
-            &lt;/dl&gt;
-          &lt;/div&gt;
+          &lt;ul class=&quot;tab-bullets&quot;&gt;
+            &lt;li&gt;&lt;span class=&quot;icon-wrap&quot;&gt;&lt;svg class=&quot;icon&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;use href=&quot;#ic-server&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span&gt;חיבור מובנה למערכות &lt;bdi&gt;BMS&lt;/bdi&gt; באמצעות ממשקי &lt;bdi&gt;Modbus RTU&lt;/bdi&gt; ו-&lt;bdi&gt;Modbus TCP&lt;/bdi&gt;&lt;/span&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;span class=&quot;icon-wrap&quot;&gt;&lt;svg class=&quot;icon&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;use href=&quot;#ic-monitor&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span&gt;ניטור רציף של עשרות יחידות פנים וחוץ תחת מסך שליטה מרכזי אחד&lt;/span&gt;&lt;/li&gt;
+          &lt;/ul&gt;
         &lt;/div&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -1011,7 +1021,7 @@ form.is-sent .field,form.is-sent .btn{display:none;}
 &lt;/section&gt;
 
 &lt;!-- STATS --&gt;
-&lt;section id=&quot;numbers&quot; class=&quot;section&quot; aria-label=&quot;נתונים עיקריים&quot; style=&quot;background:var(--bg-soft);&quot;&gt;
+&lt;section id=&quot;numbers&quot; class=&quot;section&quot; aria-label=&quot;נתונים עיקריים&quot;&gt;
   &lt;div class=&quot;container&quot;&gt;
     &lt;div class=&quot;bento stats-bento&quot;&gt;
       &lt;div class=&quot;bento-card stat-card glass glow-hover reveal&quot; style=&quot;--rs:.94&quot;&gt;
@@ -1039,35 +1049,6 @@ form.is-sent .field,form.is-sent .btn{display:none;}
           &lt;div class=&quot;stat-bar&quot; aria-hidden=&quot;true&quot;&gt;&lt;i&gt;&lt;/i&gt;&lt;/div&gt;
           &lt;div class=&quot;stat-title&quot;&gt;תדרים&lt;/div&gt;
           &lt;div class=&quot;stat-desc&quot;&gt;תמיכה מלאה ב-Wi-Fi בשני התדרים &lt;bdi&gt;2.4/5GHz&lt;/bdi&gt;&lt;/div&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/section&gt;
-
-&lt;!-- WHY TADICORE (device + three cards, all text visible) --&gt;
-&lt;section id=&quot;film-app&quot; class=&quot;section why&quot; aria-label=&quot;למה TadiCore משנה את כללי המשחק&quot; style=&quot;background:var(--bg);&quot;&gt;
-  &lt;div class=&quot;container&quot;&gt;
-    &lt;div class=&quot;why-frame&quot;&gt;
-      &lt;h3 class=&quot;why-title reveal&quot;&gt;למה TadiCore משנה את כללי המשחק?&lt;/h3&gt;
-      &lt;div class=&quot;why-grid&quot;&gt;
-        &lt;div class=&quot;why-cards&quot;&gt;
-          &lt;article class=&quot;why-card glass glow-hover reveal&quot; style=&quot;--rx:46px;--ry:0px&quot;&gt;
-            &lt;span class=&quot;icon-wrap&quot;&gt;&lt;svg class=&quot;icon&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;use href=&quot;#ic-israel&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;
-            &lt;div&gt;&lt;h4&gt;מיוצר בישראל ומותאם לישראל&lt;/h4&gt;&lt;p&gt;ממשק מלא בעברית, הגדרת שעוני שבת וחג ומותאם להרגלי הצריכה של הקהל הישראלי&lt;/p&gt;&lt;/div&gt;
-          &lt;/article&gt;
-          &lt;article class=&quot;why-card glass glow-hover reveal&quot; style=&quot;--rx:46px;--ry:0px;--d:.1s&quot;&gt;
-            &lt;span class=&quot;icon-wrap&quot;&gt;&lt;svg class=&quot;icon&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;use href=&quot;#ic-wifi&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;
-            &lt;div&gt;&lt;h4&gt;גמישות התקנה מלאה&lt;/h4&gt;&lt;p&gt;אין צורך בארון תקשורת ייעודי. ניתן להתקנה בכל חלל עם &lt;bdi&gt;Wi-Fi&lt;/bdi&gt;, בממ״דים או בחיבור קווי (&lt;bdi&gt;Ethernet PoE&lt;/bdi&gt;)&lt;/p&gt;&lt;/div&gt;
-          &lt;/article&gt;
-          &lt;article class=&quot;why-card glass glow-hover reveal&quot; style=&quot;--rx:46px;--ry:0px;--d:.2s&quot;&gt;
-            &lt;span class=&quot;icon-wrap&quot;&gt;&lt;svg class=&quot;icon&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;use href=&quot;#ic-layers&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;
-            &lt;div&gt;&lt;h4&gt;כל מערכות המיזוג באפליקציה אחת&lt;/h4&gt;&lt;p&gt;בין אם אתם בעלי חלל מסחרי ובין אם בית פרטי, TadiCore מאפשר לכם לחבר את כל המזגנים של תדיראן לאפליקציה אחת (כל עוד יש למזגנים העיליים חיבור &lt;bdi&gt;Wi-Fi&lt;/bdi&gt;)&lt;/p&gt;&lt;/div&gt;
-          &lt;/article&gt;
-        &lt;/div&gt;
-        &lt;div class=&quot;why-device reveal&quot; style=&quot;--rx:-60px;--ry:0px&quot;&gt;
-          &lt;span class=&quot;glow-orb&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
-          &lt;img src=&quot;data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==&quot; data-clone=&quot;1&quot; alt=&quot;רכיב ה-TadiCore&quot;&gt;
         &lt;/div&gt;
       &lt;/div&gt;
     &lt;/div&gt;
