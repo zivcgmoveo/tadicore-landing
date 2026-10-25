@@ -518,8 +518,9 @@ h1 .em,.scrub .em{font-style:normal;}
 .field-error{font-size:12.5px;color:var(--red);min-height:1em;}
 .form-success{display:none;text-align:center;padding:34px 20px;}
 .form-success.is-visible{display:block;}
-.form-success .icon{width:52px;height:52px;color:var(--green);margin-bottom:16px;}
-.form-success h3{font-size:20px;margin-bottom:8px;}
+.form-success .icon{width:52px;height:52px;color:var(--green);margin:0 auto 16px;}
+.form-success h3{font-size:22px;margin-bottom:8px;}
+.cta-section.is-sent .cta-copy{display:none;}
 .form-success p{color:var(--text-soft);font-size:14.5px;}
 form.is-sent .field,form.is-sent .btn{display:none;}
 .phone-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px 18px;text-align:center;}
@@ -1246,7 +1247,7 @@ form.is-sent .field,form.is-sent .btn{display:none;}
 
         &lt;div class=&quot;form-success&quot; id=&quot;formSuccess&quot;&gt;
           &lt;svg class=&quot;icon&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;use href=&quot;#ic-check-circle&quot;/&gt;&lt;/svg&gt;
-          &lt;h3&gt;הפנייה נשלחה בהצלחה&lt;/h3&gt;
+          &lt;h3&gt;הפנייה התקבלה בהצלחה&lt;/h3&gt;
           &lt;p&gt;נחזור אליך בהקדם&lt;/p&gt;
         &lt;/div&gt;
       &lt;/div&gt;
@@ -1627,6 +1628,8 @@ form.is-sent .field,form.is-sent .btn{display:none;}
       if(!valid) return;
       form.classList.add(&#x27;is-sent&#x27;);
       form.closest(&#x27;.form-card&#x27;).classList.add(&#x27;is-sent&#x27;);
+      var ctaSection = form.closest(&#x27;section&#x27;);
+      if(ctaSection) ctaSection.classList.add(&#x27;is-sent&#x27;);
       var success = document.getElementById(&#x27;formSuccess&#x27;);
       if(success) success.classList.add(&#x27;is-visible&#x27;);
     });
