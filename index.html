@@ -520,7 +520,7 @@ h1 .em,.scrub .em{font-style:normal;}
 .form-success.is-visible{display:block;}
 .form-success .icon{width:52px;height:52px;color:var(--green);margin:0 auto 16px;}
 .form-success h3{font-size:22px;margin-bottom:8px;}
-.cta-section.is-sent .cta-copy{display:none;}
+.cta-section.is-sent .cta-copy,.cta-section.is-failed .cta-copy{display:none;}
 .form-success p{color:var(--text-soft);font-size:14.5px;}
 form.is-sent .field,form.is-sent .btn{display:none;}
 .phone-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px 18px;text-align:center;}
@@ -544,6 +544,7 @@ form.is-sent .field,form.is-sent .btn{display:none;}
 .check-row input{flex:none;width:20px;height:20px;margin:2px 0 0;accent-color:var(--accent);cursor:pointer;}
 .field.has-error .check-row{color:var(--red);}
 .form-card.is-sent .phone-row,.form-card.is-sent .lead-divider,.form-card.is-sent .lead-heading,.form-card.is-sent .lead-form-wrap{display:none;}
+.form-card.is-failed .phone-row,.form-card.is-failed .lead-divider,.form-card.is-failed .lead-heading,.form-card.is-failed .lead-form-wrap{display:none;}
 
 /* ---------- Spec table ---------- */
 .spec-table-wrap{border-radius:var(--radius-lg);padding:10px;overflow:hidden;max-width:1000px;margin-inline:auto;}
@@ -797,6 +798,13 @@ form.is-sent .field,form.is-sent .btn{display:none;}
   .hero-hotspot.h1 .tip{right:0;left:auto;transform:translateY(-6px);}
   .hero-hotspot.h1:hover .tip,.hero-hotspot.h1:focus-visible .tip,.hero-hotspot.h1.is-open .tip{transform:translateY(0);}
 }
+form.is-sending .btn{opacity:.7;pointer-events:none;}
+.form-error-state{display:none;text-align:center;padding:34px 20px;}
+.form-error-state.is-visible{display:block;}
+.form-error-state .icon{width:52px;height:52px;color:var(--red);margin:0 auto 16px;}
+.form-error-state h3{font-size:22px;margin-bottom:8px;}
+.form-error-state p{color:var(--text-soft);font-size:14.5px;}
+.form-error-state .btn{margin-top:20px;}
 &lt;/style&gt;
 &lt;meta name=&quot;robots&quot; content=&quot;noindex,nofollow&quot;&gt;
 &lt;/head&gt;
@@ -815,6 +823,7 @@ form.is-sent .field,form.is-sent .btn{display:none;}
   &lt;symbol id=&quot;ic-flag&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;path d=&quot;M4 3v18&quot;/&gt;&lt;path d=&quot;M4 4h16l-3 5 3 5H4&quot;/&gt;&lt;/symbol&gt;
   &lt;symbol id=&quot;ic-check&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;polyline points=&quot;20 6 9 17 4 12&quot;/&gt;&lt;/symbol&gt;
   &lt;symbol id=&quot;ic-check-circle&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;circle cx=&quot;12&quot; cy=&quot;12&quot; r=&quot;9&quot;/&gt;&lt;polyline points=&quot;8 12.5 11 15.5 16 9&quot;/&gt;&lt;/symbol&gt;
+  &lt;symbol id=&quot;ic-alert&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;circle cx=&quot;12&quot; cy=&quot;12&quot; r=&quot;9&quot;/&gt;&lt;path d=&quot;M12 7.5v5.5&quot;/&gt;&lt;path d=&quot;M12 16.4h.01&quot;/&gt;&lt;/symbol&gt;
   &lt;symbol id=&quot;ic-plus&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;path d=&quot;M12 5v14M5 12h14&quot;/&gt;&lt;/symbol&gt;
   &lt;symbol id=&quot;ic-chevron-d&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;polyline points=&quot;6 9 12 15 18 9&quot;/&gt;&lt;/symbol&gt;
   &lt;symbol id=&quot;ic-israel&quot; viewBox=&quot;0 0 24 24&quot;&gt;
@@ -1250,6 +1259,12 @@ form.is-sent .field,form.is-sent .btn{display:none;}
           &lt;h3&gt;הפנייה התקבלה בהצלחה&lt;/h3&gt;
           &lt;p&gt;נחזור אליך בהקדם&lt;/p&gt;
         &lt;/div&gt;
+        &lt;div class=&quot;form-error-state&quot; id=&quot;formErrorState&quot; role=&quot;alert&quot;&gt;
+          &lt;svg class=&quot;icon&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;use href=&quot;#ic-alert&quot;/&gt;&lt;/svg&gt;
+          &lt;h3&gt;הטופס לא נשלח בגלל בעיית תקשורת&lt;/h3&gt;
+          &lt;p&gt;אנא נסו שוב בעוד מספר דקות&lt;/p&gt;
+          &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary&quot; id=&quot;formRetry&quot;&gt;נסו שוב&lt;/button&gt;
+        &lt;/div&gt;
       &lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
@@ -1622,16 +1637,62 @@ form.is-sent .field,form.is-sent .btn{display:none;}
       var el = form.elements[name];
       el.addEventListener(el.type === &#x27;checkbox&#x27; ? &#x27;change&#x27; : &#x27;blur&#x27;, function(){ validateField(name); });
     });
-    form.addEventListener(&#x27;submit&#x27;, function(e){
-      e.preventDefault();
-      var valid = Object.keys(fields).map(validateField).every(Boolean);
-      if(!valid) return;
+    // Lead submission – replace the body of submitLead() with the real request (fetch / CRM).
+    // It must return a Promise: resolve = lead received, reject = communication problem (shows the error message).
+    // For design review, adding ?lead=error to the page URL forces the error state.
+    function submitLead(data){
+      return new Promise(function(resolve, reject){
+        setTimeout(function(){
+          if(/[?&amp;]lead=error\b/.test(window.location.search)) reject(new Error(&#x27;network&#x27;));
+          else resolve();
+        }, 700);
+      });
+    }
+    var errorState = document.getElementById(&#x27;formErrorState&#x27;);
+    var retryBtn = document.getElementById(&#x27;formRetry&#x27;);
+    var submitBtn = form.querySelector(&#x27;button[type=&quot;submit&quot;]&#x27;);
+    function showSuccess(){
       form.classList.add(&#x27;is-sent&#x27;);
       form.closest(&#x27;.form-card&#x27;).classList.add(&#x27;is-sent&#x27;);
       var ctaSection = form.closest(&#x27;section&#x27;);
       if(ctaSection) ctaSection.classList.add(&#x27;is-sent&#x27;);
       var success = document.getElementById(&#x27;formSuccess&#x27;);
       if(success) success.classList.add(&#x27;is-visible&#x27;);
+    }
+    // Communication error: the card switches to an error state (same place as the success state)
+    function showError(){
+      form.closest(&#x27;.form-card&#x27;).classList.add(&#x27;is-failed&#x27;);
+      var sec = form.closest(&#x27;section&#x27;);
+      if(sec) sec.classList.add(&#x27;is-failed&#x27;);
+      if(errorState) errorState.classList.add(&#x27;is-visible&#x27;);
+    }
+    // &quot;Try again&quot;: back to the form, everything the user typed is still there
+    function backToForm(){
+      form.closest(&#x27;.form-card&#x27;).classList.remove(&#x27;is-failed&#x27;);
+      var sec = form.closest(&#x27;section&#x27;);
+      if(sec) sec.classList.remove(&#x27;is-failed&#x27;);
+      if(errorState) errorState.classList.remove(&#x27;is-visible&#x27;);
+      if(form.elements.fullName) form.elements.fullName.focus({preventScroll:true});
+    }
+    if(retryBtn) retryBtn.addEventListener(&#x27;click&#x27;, backToForm);
+    form.addEventListener(&#x27;submit&#x27;, function(e){
+      e.preventDefault();
+      if(form.classList.contains(&#x27;is-sending&#x27;)) return;
+      var valid = Object.keys(fields).map(validateField).every(Boolean);
+      if(!valid) return;
+      var data = {};
+      Array.prototype.forEach.call(form.elements, function(el){
+        if(el.name) data[el.name] = (el.type === &#x27;checkbox&#x27;) ? el.checked : el.value;
+      });
+      form.classList.add(&#x27;is-sending&#x27;);
+      if(submitBtn){ submitBtn.disabled = true; submitBtn.setAttribute(&#x27;aria-busy&#x27;, &#x27;true&#x27;); }
+      submitLead(data)
+        .then(showSuccess)
+        .catch(showError)
+        .then(function(){
+          form.classList.remove(&#x27;is-sending&#x27;);
+          if(submitBtn){ submitBtn.disabled = false; submitBtn.removeAttribute(&#x27;aria-busy&#x27;); }
+        });
     });
   }
 
